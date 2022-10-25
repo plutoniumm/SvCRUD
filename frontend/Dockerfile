@@ -1,13 +1,17 @@
-FROM node:12 as build
-WORKDIR /app
-ENV PATH /app/node_modules/.bin:$PATH
-COPY ./package*.json /app/
-RUN npm install --silent
-COPY . /app
+FROM node:16-alpine
+WORKDIR /usr/src/app
+
+COPY rollup.config.js ./
+COPY package*.json ./
+
+RUN npm install
+
+COPY ./src ./src
+COPY ./public ./public
+
 RUN npm run build
 
-FROM nginx:1.16.0-alpine
-COPY --from=build /app/public /usr/share/nginx/html
-COPY ./front.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+ENV HOST=0.0.0.0
+
+CMD [ "npm", "start" ]

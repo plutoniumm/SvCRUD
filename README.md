@@ -6,12 +6,10 @@ Simple app with crud operations and DB switcher.
 - Backend: nodejs + express
 
 ### databases
-- MongoDB
-- PostgreSQL
-- ElasticSearch
-- Redis
+- [x] MongoDB
+- [ ] PostgreSQL
+- [ ] ElasticSearch
+- [ ] Redis
 
 ### usage
 `docker-compose up -d` and open [http://localhost:8080](http://localhost:8080)
-
-![](https://github.com/ganochenkodg/svelte-crud/blob/master/sveltecrud.png)
