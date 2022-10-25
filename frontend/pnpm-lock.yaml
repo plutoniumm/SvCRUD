@@ -11,13 +11,13 @@ specifiers:
   rollup-plugin-terser: ^7.0.2
   sass: ^1.55.0
   sirv-cli: ^0.4.6
-  svelte: ^3.52.0
+  svelte: 3.40.0
   sveltestrap: ^3.14.1
 
 dependencies:
   redaxios: 0.5.1
   sirv-cli: 0.4.6
-  sveltestrap: 3.14.1_svelte@3.52.0
+  sveltestrap: 3.14.1_svelte@3.40.0
 
 devDependencies:
   '@rollup/plugin-commonjs': 17.1.0_rollup@2.79.1
@@ -25,10 +25,10 @@ devDependencies:
   rollup: 2.79.1
   rollup-plugin-livereload: 2.0.5
   rollup-plugin-postcss: 2.9.0
-  rollup-plugin-svelte: 7.1.0_aj2crlfd2wudglw2g7rnnkkqu4
+  rollup-plugin-svelte: 7.1.0_fwgs3dwprqe64e4fhaqzmehcyu
   rollup-plugin-terser: 7.0.2_rollup@2.79.1
   sass: 1.55.0
-  svelte: 3.52.0
+  svelte: 3.40.0
 
 packages:
 
@@ -1759,7 +1759,7 @@ packages:
       style-inject: 0.3.0
     dev: true
 
-  /rollup-plugin-svelte/7.1.0_aj2crlfd2wudglw2g7rnnkkqu4:
+  /rollup-plugin-svelte/7.1.0_fwgs3dwprqe64e4fhaqzmehcyu:
     resolution: {integrity: sha512-vopCUq3G+25sKjwF5VilIbiY6KCuMNHP1PFvx2Vr3REBNMDllKHFZN2B9jwwC+MqNc3UPKkjXnceLPEjTjXGXg==}
     engines: {node: '>=10'}
     peerDependencies:
@@ -1769,7 +1769,7 @@ packages:
       require-relative: 0.8.7
       rollup: 2.79.1
       rollup-pluginutils: 2.8.2
-      svelte: 3.52.0
+      svelte: 3.40.0
     dev: true
 
   /rollup-plugin-terser/7.0.2_rollup@2.79.1:
@@ -1983,17 +1983,17 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /svelte/3.52.0:
-    resolution: {integrity: sha512-FxcnEUOAVfr10vDU5dVgJN19IvqeHQCS1zfe8vayTfis9A2t5Fhx+JDe5uv/C3j//bB1umpLJ6quhgs9xyUbCQ==}
+  /svelte/3.40.0:
+    resolution: {integrity: sha512-PCof5NCkxw7ZIkypiHwmjk8jCnnlmJ62NQIcGr/keBCOCx2FdAYmpjLjAey8hGy58xKK4WtwLUgFNcQZK2fPLQ==}
     engines: {node: '>= 8'}
 
-  /sveltestrap/3.14.1_svelte@3.52.0:
+  /sveltestrap/3.14.1_svelte@3.40.0:
     resolution: {integrity: sha512-0gspULuzeN3VBkllKXjBPfAKjP4bM/yuEkUOf9BzshoeY7tugr3OeeSI6TVeOsD/V97pbrjia03NWUPPNenChQ==}
     peerDependencies:
       svelte: ^3.4.4
     dependencies:
       '@popperjs/core': 2.11.6
-      svelte: 3.52.0
+      svelte: 3.40.0
     dev: false
 
   /svgo/1.3.2:
