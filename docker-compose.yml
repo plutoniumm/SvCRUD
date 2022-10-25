@@ -5,19 +5,19 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - postgres
-      - elasticsearch
+      # - postgres
+      # - elasticsearch
       - mongo
-      - redis
+      # - redis
     links:
-      - postgres
-      - elasticsearch
+      # - postgres
+      # - elasticsearch
       - mongo
-      - redis
+      # - redis
   frontend:
     build: frontend/
     ports:
-      - "8080:80"
+      - "8080:5000"
     links:
       - backend
   mongo:
@@ -25,24 +25,24 @@ services:
     image: mongo
     ports:
       - "27017:27017"
-  redis:
-    hostname: redis
-    image: redis:6.0.6-alpine
-    ports:
-      - "6379:6379"
-  elasticsearch:
-    hostname: elasticsearch
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.8.1
-    ports:
-      - "9200:9200"
-      - "9300:9300"
-    environment:
-      - discovery.type=single-node
-  postgres:
-    image: postgres:10-alpine
-    ports:
-      - "5432:5432"
-    environment:
-      - POSTGRES_USER=node
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=books
+  # redis:
+  #   hostname: redis
+  #   image: redis:6.0.6-alpine
+  #   ports:
+  #     - "6379:6379"
+  # elasticsearch:
+  #   hostname: elasticsearch
+  #   image: docker.elastic.co/elasticsearch/elasticsearch:7.8.1
+  #   ports:
+  #     - "9200:9200"
+  #     - "9300:9300"
+  #   environment:
+  #     - discovery.type=single-node
+  # postgres:
+  #   image: postgres:10-alpine
+  #   ports:
+  #     - "5432:5432"
+  #   environment:
+  #     - POSTGRES_USER=node
+  #     - POSTGRES_PASSWORD=password
+  #     - POSTGRES_DB=books
