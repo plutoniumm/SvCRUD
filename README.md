@@ -13,3 +13,13 @@ Simple app with crud operations and DB switcher.
 
 ### usage
 `docker-compose up -d` and open [http://localhost:8080](http://localhost:8080)
+
+<!--U: sameer.manav@wavelabs.ai -->
+<!--P: WLmongo@AI -->
+
+<!-- Cluster -->
+<!--U: WLmongoRAN -->
+<!--P: WLmongo@AI -->
+
+## Python
+- [Flask-PyMongo](https://flask-pymongo.readthedocs.io/en/latest/)

@@ -1,80 +1,80 @@
-const elasticsearch = require('elasticsearch');
-const esclient = new elasticsearch.Client({
+const elasticsearch = require( 'elasticsearch' );
+const esclient = new elasticsearch.Client( {
   host: 'elasticsearch:9200',
   maxRetries: 5,
   requestTimeout: 30000,
-});
+} );
 
-exports.esMigration = function esMigration() {
-  esclient.ping({
+exports.esMigration = function esMigration () {
+  esclient.ping( {
     requestTimeout: 30000,
-  }, function(error) {
-    if (error) {
-      console.error('es cluster is down!');
+  }, function ( error ) {
+    if ( error ) {
+      console.error( 'es cluster is down!' );
     } else {
-      console.log('Connected to ElasticSearch');
+      console.log( 'Connected to ElasticSearch' );
     }
-  });
-  esclient.index({
+  } );
+  esclient.index( {
     index: 'books',
     type: 'book',
     id: '1',
     body: {
       title: 'Elasticsearch: The Definitive Guide',
-      author: 'Clinton Gormley',
+      author: 'Elastic Search',
       description: 'A Distributed Real-Time Search and Analytics Engine'
     },
     refresh: true
-  });
+  } );
 };
 
-exports.getBooks = async (req, res, next) => {
+exports.getBooks = async ( req, res, next ) => {
   let return_dataset = [];
-  await esclient.search({
+  await esclient.search( {
     q: '*'
-  }).then(function(body) {
+  } ).then( function ( body ) {
     var hits = body.hits.hits;
-    hits.forEach((l) => {
+    hits.forEach( ( l ) => {
       temp_data = {
         '_id': l._id,
         'title': l._source.title,
         'author': l._source.author,
         'description': l._source.description
       }
-      return_dataset.push(temp_data)
-    });
-    res.json(return_dataset);
-  }, function(error) {
-    console.trace(error.message);
-  });
+      return_dataset.push( temp_data )
+    } );
+    res.json( return_dataset );
+  }, function ( error ) {
+    console.trace( error.message );
+  } );
 };
 
-exports.getBookById = async (req, res, next) => {
-  await esclient.get({
+exports.getBookById = async ( req, res, next ) => {
+  await esclient.get( {
     index: 'books',
     type: 'book',
     id: req.params.id
-  }).then(function(body) {
+  } ).then( function ( body ) {
     var temp_data = {
       '_id': body._id,
       'title': body._source.title,
       'author': body._source.author,
       'description': body._source.description
     };
-    res.json(temp_data);
-  }, function(error) {
-    console.trace(error.message);
-  });
+    res.json( temp_data );
+  }, function ( error ) {
+    console.trace( error.message );
+  } );
 };
 
-exports.postBook = async (req, res, next) => {
+exports.postBook = async ( req, res, next ) => {
   const {
     title,
     author,
     description
   } = req.body;
   let id = new Date().getTime();
-  await esclient.index({
+  await esclient.index( {
     index: 'books',
     type: 'book',
     id: id,
@@ -84,19 +84,19 @@ exports.postBook = async (req, res, next) => {
       description: description
     },
     refresh: true
-  }, function(err, resp, status) {
-    console.log(resp);
-    res.send('Success');
-  });
+  }, function ( err, resp, status ) {
+    console.log( resp );
+    res.send( 'Success' );
+  } );
 };
 
-exports.updateBook = async (req, res, next) => {
+exports.updateBook = async ( req, res, next ) => {
   const {
     title,
     author,
     description
   } = req.body;
-  await esclient.update({
+  await esclient.update( {
     index: 'books',
     type: 'book',
     id: req.params.id,
@@ -108,19 +108,19 @@ exports.updateBook = async (req, res, next) => {
       }
     },
     refresh: true
-  }, function(err, resp, status) {
-    res.send('Success');
-  });
+  }, function ( err, resp, status ) {
+    res.send( 'Success' );
+  } );
 };
 
-exports.deleteBook = async (req, res, next) => {
-  await esclient.delete({
+exports.deleteBook = async ( req, res, next ) => {
+  await esclient.delete( {
     index: 'books',
     type: 'book',
     id: req.params.id,
     refresh: true
-  }, function(err, resp, status) {
-    console.log(resp);
-    res.send('Success');
-  });
+  }, function ( err, resp, status ) {
+    console.log( resp );
+    res.send( 'Success' );
+  } );
 };
